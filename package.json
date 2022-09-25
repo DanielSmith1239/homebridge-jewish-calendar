@@ -1,0 +1,36 @@
+{
+  "name": "homebridge-jewish-calendar-ical",
+  "displayName": "Homebridge Jewish Calendar Virtual Sensors",
+  "homepage": "https://github.com/scorpionmit01/homebridge-jewish-calendar",
+  "bugs": "https://github.com/scorpionmit01/homebridge-jewish-calendar/issues",
+  "engines": {
+    "homebridge": ">0.4.53",
+    "node": ">=10.17.0"
+  },
+  "version": "1.1.1",
+  "description": "HomeBridge Plugin that establishes a block of sensors related to events on the Jewish Calendar that you may use in your automation projects.",
+  "main": "index.js",
+  "keywords": [
+    "homebridge-plugin",
+    "hoobs-plugin",
+    "hebcal",
+    "jewish",
+    "calendar"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scorpionmit01/homebridge-jewish-calendar.git"
+  },
+  "author": {
+    "name": "Alex Hochberger",
+    "email": "scorpion@alum.mit.edu",
+    "url": "https://floridastrategicconsulting.com/"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "he-date": "^1.2.2",
+    "node-ical": "^0.15.1",
+    "suncalc": "^1.8.0"
+  }
+}
