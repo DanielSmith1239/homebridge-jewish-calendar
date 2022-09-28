@@ -120,7 +120,7 @@ class JewishCalendar {
         const items = this.cal;
 
         // Candle lighting and Havdallah
-        const itemsAfterNow = items.filter(item => this.isAfterToday(moment(item["date"]).toDate()));
+        const itemsAfterNow = items.filter(item => this.isAfterToday(new Date(item["date"])));
         const itemsBeforeNow = items.filter(item => !this.isAfterToday(new Date(item["date"])));
 
         const havdallahItemsAfterNow = itemsAfterNow.filter(item => item["category"] === "havdalah");
