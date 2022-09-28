@@ -183,9 +183,10 @@ isAfterDate(date, isAfter) {
   }
 
   updateLoop() {
+	  this.log.info("updating...")
 	this.today = new Date();
         this.updateJewishDay();
-    setTimeout(this.updateLoop.bind(this), 30000); 
+    setTimeout(this.updateLoop.bind(this), 10000); 
   }
 
     isToday(date) {
