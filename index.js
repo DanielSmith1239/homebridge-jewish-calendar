@@ -189,7 +189,6 @@ class JewishCalendar {
 
     updateLoop() {
         this.today = new Date();
-        this.log.info("updating... " + this.today.getTime());
         this.updateJewishDay();
         setTimeout(this.updateLoop.bind(this), 10000);
     }
@@ -213,7 +212,6 @@ class JewishCalendar {
     }
 
     checkHoliday(key) {
-        this.log.info("checking holiday");
         const todayItems = this.cal.filter(e => this.isToday(new Date(e["date"])));
         const isHolidayCenter = todayItems.some(e => e.title.includes(key) && !e.title.includes("Erev"));
         const todayHasHavdallah = todayItems.some(e => e["category"] === "havdalah");
