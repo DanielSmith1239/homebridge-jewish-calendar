@@ -165,6 +165,9 @@ class JewishCalendar {
                 .catch(error => {
                     this.log.error(error);
                 });
+        } else {
+            this.addNextYearIfNeeded();
+            this.updateSensors();
         }
     }
 
