@@ -73,7 +73,7 @@ class JewishCalendar {
 
 
         informationService
-            .setCharacteristic(Characteristic.Name, this.name)
+            //.setCharacteristic(Characteristic.Name, this.name)
             .setCharacteristic(Characteristic.Manufacturer, "Daniel Smith")
             .setCharacteristic(Characteristic.Model, "Standard Jewish Calendar (Hebcal)")
             .setCharacteristic(Characteristic.SerialNumber, "613")
