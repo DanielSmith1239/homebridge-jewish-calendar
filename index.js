@@ -28,20 +28,20 @@ class JewishCalendar {
         this.threeWeeksCustom = config.threeWeeksCustom;
 
         this.services = {};
-        this.services.Shabbat = new Service.ContactSensor(config.Shabbat, "Shabbat");
-        this.services.YomTov = new Service.ContactSensor(config.YomTov, "YomTov");
-        this.services.Kodesh = new Service.ContactSensor(config.Kodesh, "Kodesh");
-        this.services.RoshHashana = new Service.ContactSensor(config.RoshHashana, "RoshHashana");
-        this.services.YomKippur = new Service.ContactSensor(config.YomKippur, "YomKippur");
-        this.services.Sukkot = new Service.ContactSensor(config.Sukkot, "Sukkot");
-        this.services.SheminiAtzeret = new Service.ContactSensor(config.SheminiAtzeret, "SheminiAtzeret");
-        this.services.Pesach = new Service.ContactSensor(config.Pesach, "Pesach");
-        this.services.Shavuot = new Service.ContactSensor(config.Shavuot, "Shavuot");
-        this.services.Chanukah = new Service.ContactSensor(config.Chanukah, "Chanukah");
-        this.services.ThreeWeeks = new Service.ContactSensor(config.ThreeWeeks, "ThreeWeeks");
-        this.services.Omer = new Service.ContactSensor(config.Omer, "Omer");
-        this.services.SefiratOmer = new Service.ContactSensor(config.SefiratOmer, "SefiratOmer");
-        this.services.Mourning = new Service.ContactSensor(config.Mourning, "Mourning");
+        this.services.Shabbat = new Service.ContactSensor(config.Shabbat);
+        this.services.YomTov = new Service.ContactSensor(config.YomTov);
+        this.services.Kodesh = new Service.ContactSensor(config.Kodesh);
+        this.services.RoshHashana = new Service.ContactSensor(config.RoshHashana,);
+        this.services.YomKippur = new Service.ContactSensor(config.YomKippur);
+        this.services.Sukkot = new Service.ContactSensor(config.Sukkot);
+        this.services.SheminiAtzeret = new Service.ContactSensor(config.SheminiAtzeret);
+        this.services.Pesach = new Service.ContactSensor(config.Pesach);
+        this.services.Shavuot = new Service.ContactSensor(config.Shavuot);
+        this.services.Chanukah = new Service.ContactSensor(config.Chanukah);
+        this.services.ThreeWeeks = new Service.ContactSensor(config.ThreeWeeks);
+        this.services.Omer = new Service.ContactSensor(config.Omer);
+        this.services.SefiratOmer = new Service.ContactSensor(config.SefiratOmer,);
+        this.services.Mourning = new Service.ContactSensor(config.Mourning);
 
         this.updateJewishDay();
         setTimeout(this.updateLoop.bind(this), 30000);
@@ -73,7 +73,7 @@ class JewishCalendar {
 
 
         informationService
-            //.setCharacteristic(Characteristic.Name, this.name)
+            .setCharacteristic(Characteristic.Name, this.name)
             .setCharacteristic(Characteristic.Manufacturer, "Daniel Smith")
             .setCharacteristic(Characteristic.Model, "Standard Jewish Calendar (Hebcal)")
             .setCharacteristic(Characteristic.SerialNumber, "613")
