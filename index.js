@@ -14,8 +14,8 @@ class JewishCalendar {
     constructor(log, config, api) {
         this.log = log;
 
-        this.today = new Date();
-        //this.today = new Date("2022-09-25T22:04:00-04:00");
+        // this.today = new Date();
+        this.today = new Date("2024-10-02T09:04:00-04:00");
         this.lat = parseFloat(config.latitude);
         this.long = parseFloat(config.longitude);
         this.name = config.name;
