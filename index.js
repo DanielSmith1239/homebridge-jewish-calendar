@@ -15,7 +15,7 @@ class JewishCalendar {
         this.log = log;
 
         // this.today = new Date();
-        this.today = new Date("2024-10-02T09:04:00-04:00");
+        this.today = new Date("2024-10-05T09:04:00-04:00");
         this.lat = parseFloat(config.latitude);
         this.long = parseFloat(config.longitude);
         this.name = config.name;
