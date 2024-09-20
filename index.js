@@ -14,8 +14,8 @@ class JewishCalendar {
     constructor(log, config, api) {
         this.log = log;
 
-        // this.today = new Date();
-        this.today = new Date("2024-10-04T22:57:00-04:00");
+        this.today = new Date();
+        // this.today = new Date("2024-10-04T22:57:00-04:00");
         this.lat = parseFloat(config.latitude);
         this.long = parseFloat(config.longitude);
         this.name = config.name;
@@ -143,8 +143,6 @@ class JewishCalendar {
         const candles = candleLightings[candleLightings.length - 1];
         const firstCandleLightingDate = new Date(candles["date"]);
         const memo = !candles["memo"].includes("II") ? candles["memo"] : "shab";
-
-        this.log.info(candles);
 
         if (this.isAfterToday(firstCandleLightingDate)) {
             return "";
