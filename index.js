@@ -104,6 +104,7 @@ class JewishCalendar {
         var url = "https://www.hebcal.com/hebcal?v=1&cfg=json&a=" +
             ashkenaz + "maj=on&min=on&mod=on&nx=on&year=" + year + "&month=x&ss=on&mf=on&c=on&o=on&d=on&geo=pos&latitude=" +
             this.lat + "&longitude=" + this.long;
+        this.log.info(url);
         return url;
     }
 
