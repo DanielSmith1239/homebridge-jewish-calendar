@@ -118,7 +118,7 @@ class JewishCalendar {
     getCurChodesh() {
         const today = this.today;
         const items = this.cal;
-        this.log.info(items);
+        this.log.info(JSON.stringify(items));
 
         // Candle lighting and Havdallah
         const itemsAfterNow = items.filter(item => this.isAfterToday(new Date(item["date"])));
