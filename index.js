@@ -142,7 +142,7 @@ class JewishCalendar {
         });
 
         const firstCandleLightingDate = new Date(candleLightings[0]["date"]);
-        this.log.info(firstCandleLightingDate);
+        this.log.info(havdallahItemsAfterNow[0]);
         const memo = havdallahItemsAfterNow[0]["memo"];
 
         if (this.isAfterToday(firstCandleLightingDate)) {
