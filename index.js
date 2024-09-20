@@ -143,7 +143,7 @@ class JewishCalendar {
 
         const firstCandleLightingDate = new Date(candleLightings[0]["date"]);
         const memo = candleLightings[0]["memo"];
-        this.log.info(candleLightings[0]);
+        this.log.info(candleLightings);
 
         if (this.isAfterToday(firstCandleLightingDate)) {
             return "";
