@@ -140,10 +140,11 @@ class JewishCalendar {
             return this.isAfterDate(itemDate, prevHavdallahDate) &&
                 this.isAfterDate(nextHavdallahDate, itemDate);
         });
+        const candles = candleLightings[candleLightings.length - 1];
+        const firstCandleLightingDate = new Date(candles["date"]);
+        const memo = candles["memo"].includes("II") ? candles["memo"] : "shab";
 
-        const firstCandleLightingDate = new Date(candleLightings[0]["date"]);
-        const memo = candleLightings[0]["memo"];
-        this.log.info(candleLightings);
+        this.log.info(candles);
 
         if (this.isAfterToday(firstCandleLightingDate)) {
             return "";
