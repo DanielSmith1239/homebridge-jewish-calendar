@@ -102,7 +102,7 @@ class JewishCalendar {
         var ashkenaz = "on";
         year = (year === 0) ? "now" : year.toString();
         var url = "https://www.hebcal.com/hebcal?v=1&cfg=json&a=" +
-            ashkenaz + "maj=on&min=on&mod=on&nx=on&year=" + year + "&month=x&ss=on&mf=on&c=on&o=on&d=on&geo=pos&latitude=" +
+            ashkenaz + "maj=on&min=on&mod=on&nx=on&year=" + year + "&month=x&ss=on&mf=on&c=on&o=on&geo=pos&latitude=" +
             this.lat + "&longitude=" + this.long;
         return url;
     }
