@@ -190,8 +190,8 @@ class JewishCalendar {
     }
 
     updateLoop() {
-        // this.today = new Date();
-        this.today = new Date("2024-10-04T22:57:00-04:00");
+        this.today = new Date();
+        // this.today = new Date("2024-10-04T22:57:00-04:00");
         
         this.updateJewishDay();
         setTimeout(this.updateLoop.bind(this), 10000);
