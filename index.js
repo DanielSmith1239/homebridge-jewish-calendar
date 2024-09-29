@@ -145,6 +145,10 @@ class JewishCalendar {
         const firstCandleLightingDate = new Date(candles["date"]);
         const memo = !(candles["memo"] ?? "").includes("II") ? candles["memo"] : "shab";
 
+        this.log.info(candles);
+        this.log.info("first:");
+        this.log.info(firstCandleLightingDate);
+
         if (this.isAfterToday(firstCandleLightingDate)) {
             return "";
         }
