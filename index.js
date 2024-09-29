@@ -142,17 +142,13 @@ class JewishCalendar {
         });
         const candles = candleLightings[candleLightings.length - 1];
         const firstCandleLightingDate = new Date(candles["date"]);
-        const memo = !candles["memo"].includes("II") ? candles["memo"] : "shab";
+        const memo = !(candles["memo"] ?? "").includes("II") ? candles["memo"] : "shab";
 
         if (this.isAfterToday(firstCandleLightingDate)) {
             return "";
         }
 
-        if (memo != null) {
-            return memo;
-        }
-
-        return "shab";
+        return (memo != null) ? memo : "shab";
     }
 
     updateJewishDay() {
