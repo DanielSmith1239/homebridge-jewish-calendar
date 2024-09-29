@@ -142,6 +142,9 @@ class JewishCalendar {
                 this.isAfterDate(nextHavdallahDate, itemDate);
         });
         let candles = candleLightings.find((e) =>  this.isAfterDate(today, new Date(e["date"])));
+        if (candles == null) {
+            return "";
+        }
         
         // const candles = candleLightings[candleLightings.length - 1];
         const firstCandleLightingDate = new Date(candles["date"]);
