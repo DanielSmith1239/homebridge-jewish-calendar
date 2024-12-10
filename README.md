@@ -47,10 +47,6 @@ Example config.json:
 
 The project was originally designed for me to have a better "Shabbat Mode" in Homekit, but for completeness I added some very specific ones. The settings in the Config for the holidays are to change spelling. I use a modern Transliterated spelling, but feel free to replace with Hebrew, Ashkenazi transliterations, English, or whatever language you prefer. If you look in the sample above, you can see a variation of languages.
 
-## Caveats
-
-Suncalc is known to occaisionaly have issues of a few minutes. Unfortunately the other library I found was not compatible with Homebridge. If you are concerned with Halachic specificity, you need to add at least 1 minute to cover the fractional minute between updates, and 3 minutes for safety on Sun-Calc. In general, this is more useful for limiting Trigger Events in your Automation rules than serious Halachic implications.
-
 ## How to Use in Automations
 
 I use the Home App for building my scenes (to include Homepods), and the Eve App for programing. But any Homekit app should work.
