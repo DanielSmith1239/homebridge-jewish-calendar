@@ -43,6 +43,7 @@ class JewishCalendar {
         this.services.Omer = new Service.ContactSensor(config.Omer, "Omer");
         this.services.SefiratOmer = new Service.ContactSensor(config.SefiratOmer, "SefiratOmer");
         this.services.Mourning = new Service.ContactSensor(config.Mourning, "Mourning");
+        this.services.ShabbosFinalMinute = new Service.ContactSensor(config.Mourning, "ShabbosFinalMinute");
 
         this.updateJewishDay();
         setTimeout(this.updateLoop.bind(this), 30000);
@@ -62,6 +63,7 @@ class JewishCalendar {
         this.services.ThreeWeeks.getCharacteristic(Characteristic.ContactSensorState).setValue(this.isThreeWeeks());
         this.services.Omer.getCharacteristic(Characteristic.ContactSensorState).setValue(this.isOmer());
         this.services.Mourning.getCharacteristic(Characteristic.ContactSensorState).setValue(this.isMourning());
+        this.services.ShabbosFinalMinute.getCharacteristic(Characteristic.ContactSensorState).setValue(this.isShabbosFinalMinute());
     }
 
     getName(obj, callback) {
@@ -266,6 +268,23 @@ class JewishCalendar {
 
     isShabbat() {
         return this.checkChodesh("shab");
+    }
+
+    isShabbosFinalMinute() {
+        if (this.checkChodesh("shab")) {
+            const today = this.today;
+            const items = this.cal;
+    
+            // Havdallah
+            const itemsAfterNow = items.filter(item => this.isAfterToday(new Date(item["date"])));    
+            const havdallahItemsAfterNow = itemsAfterNow.filter(item => item["title"].includes("Havdalah:"));
+            const nextHavdallahDate = new Date(havdallahItemsAfterNow[0]["date"]);
+    
+            return today.getTime() >= nextHavdallahDate.getTime() - 60
+                && today.getTime() < nextHavdallahDate.getTime();
+        }
+        
+        return false;
     }
 
     isRoshHashana() {
