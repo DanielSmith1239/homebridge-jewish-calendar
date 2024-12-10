@@ -44,6 +44,7 @@ class JewishCalendar {
         this.services.SefiratOmer = new Service.ContactSensor(config.SefiratOmer, "SefiratOmer");
         this.services.Mourning = new Service.ContactSensor(config.Mourning, "Mourning");
         this.services.ShabbosFinalMinute = new Service.ContactSensor(config.ShabbosFinalMinute, "ShabbosFinalMinute");
+        this.services.KodeshFinalMinute = new Service.ContactSensor(config.KodeshFinalMinute, "KodeshFinalMinute");
 
         this.updateJewishDay();
         setTimeout(this.updateLoop.bind(this), 30000);
@@ -64,6 +65,7 @@ class JewishCalendar {
         this.services.Omer.getCharacteristic(Characteristic.ContactSensorState).setValue(this.isOmer());
         this.services.Mourning.getCharacteristic(Characteristic.ContactSensorState).setValue(this.isMourning());
         this.services.ShabbosFinalMinute.getCharacteristic(Characteristic.ContactSensorState).setValue(this.isShabbosFinalMinute());
+        this.services.KodeshFinalMinute.getCharacteristic(Characteristic.ContactSensorState).setValue(this.isKodeshFinalMinute());
     }
 
     getName(obj, callback) {
@@ -96,7 +98,9 @@ class JewishCalendar {
             this.services.Chanukah,
             this.services.ThreeWeeks,
             this.services.Omer,
-            this.services.Mourning
+            this.services.Mourning,
+            this.services.KodeshFinalMinute,
+            this.services.ShabbosFinalMinute
         ];
         return services;
     }
@@ -270,21 +274,25 @@ class JewishCalendar {
         return this.checkChodesh("shab");
     }
 
+    isFinalMinuteBeforeHavdallah() {
+        const today = this.today;
+        const items = this.cal;
+
+        // Havdallah
+        const itemsAfterNow = items.filter(item => this.isAfterToday(new Date(item["date"])));    
+        const havdallahItemsAfterNow = itemsAfterNow.filter(item => item["title"].includes("Havdalah:"));
+        const nextHavdallahDate = new Date(havdallahItemsAfterNow[0]["date"]);
+
+        return today.getTime() >= nextHavdallahDate.getTime() - 60
+            && today.getTime() < nextHavdallahDate.getTime();
+    }
+
     isShabbosFinalMinute() {
-        if (this.checkChodesh("shab")) {
-            const today = this.today;
-            const items = this.cal;
-    
-            // Havdallah
-            const itemsAfterNow = items.filter(item => this.isAfterToday(new Date(item["date"])));    
-            const havdallahItemsAfterNow = itemsAfterNow.filter(item => item["title"].includes("Havdalah:"));
-            const nextHavdallahDate = new Date(havdallahItemsAfterNow[0]["date"]);
-    
-            return today.getTime() >= nextHavdallahDate.getTime() - 60
-                && today.getTime() < nextHavdallahDate.getTime();
-        }
-        
-        return false;
+        return this.isShabbat() && this.isFinalMinuteBeforeHavdallah();
+    }
+
+    isKodeshFinalMinute() {
+        return this.isKodesh() && this.isFinalMinuteBeforeHavdallah();
     }
 
     isRoshHashana() {
