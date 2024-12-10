@@ -142,6 +142,14 @@
                 "condition": { "functionBody": "return model.showAdvancedOptions === true;" },
                 "description": "This sensor turns on when either Three Weeks or Sefirat Haomer is running. You can use in music related automations if you want."
             },
+            "ShabbosFinalMinute": {
+                "title": "Preferred spelling for the final minute of shabbos Sensor",
+                "type": "string",
+                "default": "Shabbos Final Minute",
+                "required": true,
+                "condition": { "functionBody": "return model.showAdvancedOptions === true;" },
+                "description": "This sensor turns on while in the final minute of shabbos."
+            },
             "Omer": {
                 "title": "Preferred spelling for the Omer",
                 "type": "string",
