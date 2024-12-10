@@ -5,7 +5,7 @@
 
 # "Jewish Calendar" Plugin
 
-This Plugin creates a series of Contact Switches that you can use in Automation related to the Hebrew Calendar. The heavy lift of this is from he-date and sun-calc. The rest was just calculating the various events.
+This Plugin creates a series of Contact Switches that you can use in Automation related to the Hebrew Calendar. The calculations are pulled from Hebcal.
 
 
 Example config.json:
@@ -71,8 +71,6 @@ Conditions:
   Sukkot: Closed
 Scene: Sukkah On
 
-NOTE: Because of quirks in how Sun-Calc and Apple can calculate things like Sundown, I recommend that you either use a fixed Time for your Trigger, or Sundown or later. But setting it to run 15 minutes before Sundown when Shabbat: On should work.
-
 On/Off Settings - the words may be backwards. Contact sensors are open/closed. Eve is a fantastic for editing rules but it terminology felt "backwards" for checking the settings.
 
 ## Debugging your rules
@@ -121,13 +119,3 @@ Three Weeks Settings:
 Sukkot: is on from beginning of holiday through Shemini Atzeret. If you enable sheminiatzeret_in_sukkot in the config, it will run until Simchat Torah (or end of Shemini Atzeret in Israel). Chol Hamoed is part of this Sensor.
 
 Pesach: runs from beginning of holiday through the end, including Chol Hamoed.
-
-## Special Thank You
-
-Hat tip to shayweiss who found the bug and the fix. It's Suncalc Issue #11, apparently not being fixed
-https://github.com/mourner/suncalc/issues/11
-
-
-## How to say thank you for this
-
-Drop me an email, scorpion@alum.mit.edu will always forward to me and say thanks. It's happened a few times, and it really makes my day. If you want to do more, please consider a donation to your local Jewish Federation in honor of Homebridge Jewish Calendar.
