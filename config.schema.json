@@ -150,6 +150,14 @@
                 "condition": { "functionBody": "return model.showAdvancedOptions === true;" },
                 "description": "This sensor turns on while in the final minute of shabbos."
             },
+            "KodeshFinalMinute": {
+                "title": "Preferred spelling for the final minute of kodesh Sensor",
+                "type": "string",
+                "default": "Kodesh Final Minute",
+                "required": true,
+                "condition": { "functionBody": "return model.showAdvancedOptions === true;" },
+                "description": "This sensor turns on while in the final minute of a kodesh."
+            },
             "Omer": {
                 "title": "Preferred spelling for the Omer",
                 "type": "string",
