@@ -136,7 +136,11 @@ class JewishCalendar {
         const havdallahItemsBeforeNow = itemsBeforeNow.filter(item => item["title"].includes("Havdalah:"));
 
         const nextHavdallahDate = new Date(havdallahItemsAfterNow[0]["date"]);
-        const prevHavdallahDate = new Date(havdallahItemsBeforeNow[havdallahItemsBeforeNow.length - 1]["date"]);
+        // if (havdallahItemsBeforeNow.length == 0) {
+        //     candles = 
+        // }
+
+        const prevHavdallah = new Date(havdallahItemsBeforeNow[havdallahItemsBeforeNow.length - 1]);
         const candleLightings = items.filter(item => {
             if (item["category"] !== "candles") {
                 return false;
@@ -144,10 +148,14 @@ class JewishCalendar {
 
             const itemDate = new Date(item["date"]);
 
-            return this.isAfterDate(itemDate, prevHavdallahDate) &&
+            if (prevHavdallah == null) {
+                return itemDate == candleLightings[0]
+            }
+            
+            return this.isAfterDate(itemDate, prevHavdallah["date"]) &&
                 this.isAfterDate(nextHavdallahDate, itemDate);
         });
-        let candles = candleLightings.find((e) =>  this.isAfterDate(today, new Date(e["date"])));
+        let candles = candleLightings.find((e) => this.isAfterDate(today, new Date(e["date"])));
         if (candles == null) {
             return "";
         }
