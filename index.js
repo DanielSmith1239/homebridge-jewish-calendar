@@ -136,11 +136,7 @@ class JewishCalendar {
         const havdallahItemsBeforeNow = itemsBeforeNow.filter(item => item["title"].includes("Havdalah:"));
 
         const nextHavdallahDate = new Date(havdallahItemsAfterNow[0]["date"]);
-        // if (havdallahItemsBeforeNow.length == 0) {
-        //     candles = 
-        // }
-
-        const prevHavdallah = new Date(havdallahItemsBeforeNow[havdallahItemsBeforeNow.length - 1]);
+        const prevHavdallahDate = new Date(havdallahItemsBeforeNow[havdallahItemsBeforeNow.length - 1]["date"]);
         const candleLightings = items.filter(item => {
             if (item["category"] !== "candles") {
                 return false;
@@ -148,18 +144,14 @@ class JewishCalendar {
 
             const itemDate = new Date(item["date"]);
 
-            if (prevHavdallah == null) {
-                return itemDate == candleLightings[0]
-            }
-            
-            return this.isAfterDate(itemDate, prevHavdallah["date"]) &&
+            return this.isAfterDate(itemDate, prevHavdallahDate) &&
                 this.isAfterDate(nextHavdallahDate, itemDate);
         });
-        let candles = candleLightings.find((e) => this.isAfterDate(today, new Date(e["date"])));
+        let candles = candleLightings.find((e) =>  this.isAfterDate(today, new Date(e["date"])));
         if (candles == null) {
             return "";
         }
-        
+
         // const candles = candleLightings[candleLightings.length - 1];
         const firstCandleLightingDate = new Date(candles["date"]);
         const memo = !(candles["memo"] ?? "").includes("II") ? candles["memo"] : "shab";
@@ -195,12 +187,25 @@ class JewishCalendar {
 
     addNextYearIfNeeded() {
         const lastDateInCal = new Date(this.cal[this.cal.length - 1]["date"]);
+        const firstDateInCal = new Date(this.cal[0]["date"]);
+        
         // If within 7 days...
         if ((lastDateInCal.getTime() - this.today.getTime()) / (1000 * 3600 * 24) <= 7) {
             axios
                 .get(this.makeUrl(this.today.getFullYear() + 1))
                 .then(res => {
                     this.cal.concat(res.data["items"]);
+                    this.updateSensors();
+                })
+                .catch(error => {
+                    this.log.error(error);
+                });
+        } else if (this.today.getDate() <= 7 && this.today.getMonth() == 0) {
+            // Beginning of year
+            axios
+                .get(this.makeUrl(this.today.getFullYear() - 1))
+                .then(res => {
+                    this.cal = [...this.cal, ...res.data["items"]]
                     this.updateSensors();
                 })
                 .catch(error => {
