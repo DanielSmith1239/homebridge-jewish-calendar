@@ -137,6 +137,8 @@ class JewishCalendar {
 
         const nextHavdallahDate = new Date(havdallahItemsAfterNow[0]["date"]);
         const prevHavdallahDate = new Date(havdallahItemsBeforeNow[havdallahItemsBeforeNow.length - 1]["date"]);
+        this.log.info(prevHavdallahDate);
+        this.log.info(nextHavdallahDate);
         const candleLightings = items.filter(item => {
             if (item["category"] !== "candles") {
                 return false;
@@ -155,7 +157,7 @@ class JewishCalendar {
         // const candles = candleLightings[candleLightings.length - 1];
         const firstCandleLightingDate = new Date(candles["date"]);
         const memo = !(candles["memo"] ?? "").includes("II") ? candles["memo"] : "shab";
-
+        this.log.info(memo);
         this.log.info(candleLightings);
         this.log.info("active:");
         this.log.info(candles);
