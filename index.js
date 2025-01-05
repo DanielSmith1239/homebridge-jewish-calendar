@@ -134,7 +134,7 @@ class JewishCalendar {
 
         const havdallahItemsAfterNow = itemsAfterNow.filter(item => item["title"].includes("Havdalah:"));
         const havdallahItemsBeforeNow = itemsBeforeNow.filter(item => item["title"].includes("Havdalah:"));
-
+        this.log.info(havdallahItemsBeforeNow);
         const nextHavdallahDate = new Date(havdallahItemsAfterNow[0]["date"]);
         const prevHavdallahDate = new Date(havdallahItemsBeforeNow[havdallahItemsBeforeNow.length - 1]["date"]);
         this.log.info("prev");
