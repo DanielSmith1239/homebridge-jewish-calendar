@@ -126,7 +126,7 @@ class JewishCalendar {
     getCurChodesh() {
         const today = this.today;
         const items = this.cal;
-        // this.log.info(JSON.stringify(items));
+        this.log.info(JSON.stringify(items));
 
         // Candle lighting and Havdallah
         const itemsAfterNow = items.filter(item => this.isAfterToday(new Date(item["date"])));
@@ -161,8 +161,8 @@ class JewishCalendar {
         const memo = !(candles["memo"] ?? "").includes("II") ? candles["memo"] : "shab";
         // this.log.info(memo);
         // this.log.info(candleLightings);
-        this.log.info("candles:");
-        this.log.info(candles);
+        // this.log.info("candles:");
+        // this.log.info(candles);
 
         if (this.isAfterToday(firstCandleLightingDate)) {
             return "";
