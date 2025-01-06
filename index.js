@@ -126,7 +126,7 @@ class JewishCalendar {
     getCurChodesh() {
         const today = this.today;
         const items = this.cal;
-        this.log.info(JSON.stringify(items));
+        // this.log.info(JSON.stringify(items));
 
         // Candle lighting and Havdallah
         const itemsAfterNow = items.filter(item => this.isAfterToday(new Date(item["date"])));
@@ -134,13 +134,13 @@ class JewishCalendar {
 
         const havdallahItemsAfterNow = itemsAfterNow.filter(item => item["title"].includes("Havdalah:"));
         const havdallahItemsBeforeNow = itemsBeforeNow.filter(item => item["title"].includes("Havdalah:"));
-        this.log.info(havdallahItemsBeforeNow);
+        // this.log.info(havdallahItemsBeforeNow);
         const nextHavdallahDate = new Date(havdallahItemsAfterNow[0]["date"]);
         const prevHavdallahDate = new Date(havdallahItemsBeforeNow[havdallahItemsBeforeNow.length - 1]["date"]);
-        this.log.info("prev");
-        this.log.info(prevHavdallahDate);
-        this.log.info("next");
-        this.log.info(nextHavdallahDate);
+        // this.log.info("prev");
+        // this.log.info(prevHavdallahDate);
+        // this.log.info("next");
+        // this.log.info(nextHavdallahDate);
         const candleLightings = items.filter(item => {
             if (item["category"] !== "candles") {
                 return false;
@@ -167,6 +167,8 @@ class JewishCalendar {
         if (this.isAfterToday(firstCandleLightingDate)) {
             return "";
         }
+
+        this.log.info("active: " + (memo != null) ? memo : "shab");
 
         return (memo != null) ? memo : "shab";
     }
