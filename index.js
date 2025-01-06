@@ -209,7 +209,7 @@ class JewishCalendar {
             axios
                 .get(this.makeUrl(this.today.getFullYear() - 1))
                 .then(res => {
-                    this.cal = [...this.cal, ...res.data["items"]]
+                    this.cal = [...res.data["items"], ...this.cal]
                     this.updateSensors();
                 })
                 .catch(error => {
